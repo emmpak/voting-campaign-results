@@ -12,9 +12,9 @@ namespace :import do
         next unless fields.shift == VOTE
 
         voted_at = Time.at(fields.shift.to_i)
-        required_fields = fields[0..2].map { |field| field.split(':').last }
+        entry_values = fields[0..2].map { |field| field.split(':').last }
 
-        vote = LogEntry.new(*required_fields)
+        vote = LogEntry.new(*entry_values)
 
         campaign = Campaign.find_or_create_by(name: vote.campaign_name)
         Vote.create!(

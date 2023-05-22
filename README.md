@@ -66,3 +66,7 @@ To run the tests for this application:
 ```
 bundle exec rspec
 ```
+
+## Design Decisions and Approach
+
+For more detailed information on the design decisions and approach for this application, see [Design.md](Design.md).
