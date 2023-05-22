@@ -1,0 +1,7 @@
+<h1><%= @campaign.name %></h1>
+<h2>Candidates</h2>
+<ul>
+  <% @campaign.vote_results.each do |choice, count| %>
+    <li><%= choice %>: <%= count %></li>
+  <% end %>
+</ul>

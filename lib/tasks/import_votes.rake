@@ -4,8 +4,10 @@ namespace :import do
     VOTE = "VOTE"
     LogEntry = Struct.new(:campaign_name, :validity, :choice)
 
-    File.open("data/vote.txt", "r") do |f|
+    File.open("data/votes.txt", "r") do |f|
       f.each_line do |line|
+        next if line.strip.empty?
+        
         fields = line.split
         next unless fields.shift == VOTE
 
