@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_100217) do
     t.bigint "campaign_id", null: false
     t.string "choice", null: false
     t.integer "validity", null: false
-    t.integer "voted_at", null: false
+    t.datetime "voted_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["campaign_id"], name: "index_votes_on_campaign_id"

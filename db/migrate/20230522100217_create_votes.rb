@@ -4,7 +4,7 @@ class CreateVotes < ActiveRecord::Migration[7.0]
       t.references :campaign, null: false, foreign_key: true
       t.string :choice, null: false
       t.integer :validity, null: false
-      t.integer :voted_at, null: false
+      t.datetime :voted_at, null: false
 
       t.timestamps
     end
