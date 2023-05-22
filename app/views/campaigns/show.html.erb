@@ -1,7 +1,23 @@
 <h1><%= @campaign.name %></h1>
 <h2>Candidates</h2>
-<ul>
-  <% @campaign.vote_results.each do |choice, count| %>
-    <li><%= choice %>: <%= count %></li>
-  <% end %>
-</ul>
+
+<table class="table-bordered">
+  <thead>
+    <tr>
+      <th>Choice</th>
+      <th>Valid Votes</th>
+      <th>Invalid Votes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @campaign.vote_results.each do |choice, results| %>
+      <tr>
+        <td><%= choice %></td>
+        <td><%= results[:valid] %></td>
+        <td><%= results[:invalid] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', campaigns_path %>

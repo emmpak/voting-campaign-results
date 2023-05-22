@@ -23,7 +23,7 @@ RSpec.feature "Campaigns", type: :feature do
   describe "show page" do
     let!(:campaign) { create(:campaign, name: 'Campaign1') }
     let!(:vote1) { create(:vote, campaign: campaign, choice: 'Choice1', validity: 'during') }
-    let!(:vote2) { create(:vote, campaign: campaign, choice: 'Choice2', validity: 'during') }
+    let!(:vote2) { create(:vote, campaign: campaign, choice: 'Choice1', validity: 'during') }
     let!(:vote3) { create(:vote, campaign: campaign, choice: 'Choice1', validity: 'post') }
 
     before do
@@ -34,9 +34,12 @@ RSpec.feature "Campaigns", type: :feature do
       expect(page).to have_text(campaign.name)
     end
 
-    it "displays vote counts for 'during' validity votes" do
-      expect(page).to have_text("Choice1: 1")
-      expect(page).to have_text("Choice2: 1")
+    it "shows the valid and invalid total count" do
+      within 'table' do
+        expect(page).to have_content("Choice1")
+        expect(page).to have_content("2") # valid votes
+        expect(page).to have_content("1") # invalid votes
+      end
     end
   end
 end
